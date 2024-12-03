@@ -108,6 +108,7 @@ class Alumno_controller extends CI_Controller {
 
 			$this->output->set_status_header( 400 );
 
+			
             $erroresDeValidacion  =  array(
         	/**form_error('ATRIBUTO name DE LA ETIQUETA <input>') */
 
@@ -216,15 +217,18 @@ class Alumno_controller extends CI_Controller {
 			//var_dump($erroresDeValidacion);
       		
 			echo json_encode( $erroresDeValidacion );
+			
 
-        }else
+        }
+		
+		else
 		{
 
         //echo $_POST["formSocio_beneficioGratuidadSiNo"];//beneficio
 
         //$formSocio=array();
 
-        $formSocio_rut = $this->input->post("formSocio_rut");
+         $formSocio_rut = $this->input->post("formSocio_rut");
 
          $formSocio_nombres = $this->input->post("formSocio_nombres");
         

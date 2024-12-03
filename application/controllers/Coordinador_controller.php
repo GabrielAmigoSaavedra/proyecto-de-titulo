@@ -6,9 +6,9 @@ class Coordinador_controller extends CI_Controller {
     public function __construct( ){
 
         parent::__construct();
-	
 
-       
+		$this->load->helper(array( 'autenticaciones/reglasIngresoNuevoUsuario' ) );
+
     }
 	public function index()
 	{
@@ -17,52 +17,7 @@ class Coordinador_controller extends CI_Controller {
 	}
 
 
-    public function insertarAlumno()
-	{
-
-		$this->form_validation->set_rules(array(
-                'field' => 'alumnoRUT',
-                'label' => 'rut',
-                'rules' => 'regex_match[/^(\d{1,2}(?:[\.]?\d{3}){2}-[\dkK])$/]|required|trim',
-                'errors'=> array(
-                    'required'      => 'El campo %s es requerido.',
-                    'regex_match'   => 'Debes ingresar un RUT.'
-                    )
-        ));
-
-		//si en el formulario login no se ingresan los datos requeridos lanza los mensajes de error
-		if(	 $this->form_validation->run() === FALSE){
-
-			//recarga la pagina con los errores a la vista
-			
-			//en caso de que los campos esten vacios lanza los errores de 
-			
-			$this->output->set_status_header( 400 );
-			
-			$erroresDeValidacion = array(
-				
-				//error de input rut
-				'alumnoRUT' => form_error('alumnoRUT'),
-				
-			);
-			echo json_encode( $erroresDeValidacion );
-			
-		}
-        
-        else
-        
-        {
-
-			/*obtener los datos ingresados desde la vista view/login_view.php 
-			que son obtenidos en el formulario a travez de metodo post*/
-
-		$rutAlumno =$this->input->post('alumnoRUT');
-
-		$this->Usuarios_model->insertarUsuario( $rutAlumno ,"2" );
-
-			
-		}
-	}
+    
 
 	public function mostrarAlumnos()
 	{
@@ -131,6 +86,57 @@ class Coordinador_controller extends CI_Controller {
 		
 		$pdf->Output();
 	}
+
+	public function insertarAlumno()
+	{
+
+		$reglasDeValidacion	=	getReglasDeNuevoUsuario();
+        
+
+        //$this->form_validation->set_rules('ingresarUsuario', 'name','regex_match[/^(\d{1,2}(?:[\.]?\d{3}){2}-[\dkK])$/]|trim|required' );
+        
+        
+        $this->form_validation->set_rules( $reglasDeValidacion);
+		
+		if(	 $this->form_validation->run() === FALSE)
+		{
+			$this->output->set_status_header( 400 );
+
+            echo json_encode( array(
+                            'mensajeError' => form_error('rutUsuario' )
+                        )
+                );
+        }
+        
+        else
+        
+        {
+
+			/*obtener los datos ingresados desde la vista view/login_view.php 
+			que son obtenidos en el formulario a travez de metodo post*/
+
+			$rutAlumno =$this->input->post('rutUsuario');
+
+			$this->Usuarios_model->insertarUsuario( $rutAlumno ,"3","","" );
+
+			
+			/*
+            $rut=$this->input->post("rutUsuario");
+
+            if(isset( $rut ) )
+            {
+                echo json_encode(array(
+					"rut" => $rut
+					)
+				);
+
+            }
+			*/
+        
+		}
+	}
+
+
 
 
 }

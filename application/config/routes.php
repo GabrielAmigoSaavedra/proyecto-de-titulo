@@ -71,9 +71,11 @@ $route['cerrarSesion'] = 'Usuario_controller/cerrarSesion';
 $route['Dashboard/Administrador'] = 'Administrador_controler';
 
 
-/**/$route['Administrador/Usuarios'] = 'Administrador_controler/mostrarUsuarios';
+/**/$route['Usuarios'] = 'Administrador_controler/mostrarCoordinadores';
 
-/**/$route['Administrador/PruebaInput'] = 'Administrador_controler/pruebaArrayInput';
+/**///$route['Administrador/PruebaInput'] = 'Administrador_controler/pruebaArrayInput';
+
+/**/$route['Administrador/IngresarNuevoCoordinador'] = 'Administrador_controler/insertarCoordinador';
 
 
 /**COORDINADOR */
@@ -81,6 +83,9 @@ $route['Dashboard/Administrador'] = 'Administrador_controler';
 
 
 $route['Dashboard/Coordinador'] = 'Coordinador_controller';
+
+
+//$route['mostrarCoordinadores'] = 'Coordinador_controller/mostrarTodosLosCoordinadores';
 
 
 $route['todosLosAlumnos'] = 'Coordinador_controller/mostrarAlumnos';

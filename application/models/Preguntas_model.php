@@ -66,8 +66,9 @@ class Preguntas_model extends CI_Model {
     }
     
 
-    private function calcularDimensiones (){
+    private function calcularDimensiones ()
     {
+    
         $consulta = '   SELECT  p.idPregunta,p.pregunta, d.idDimension,d.nombreDimension
                         FROM pregunta_dimension as pd
                         INNER JOIN preguntas_cuestionario_mslq as p ON pd.idPregunta = p.idPregunta
@@ -75,7 +76,7 @@ class Preguntas_model extends CI_Model {
 
 
         return $this->db->query($consulta)->result();
-    }
+    
 
     }
     

@@ -112,8 +112,7 @@
                     class = "form-control " 
                     id = "formSocio_rut" 
                     placeholder = "Ingresar RUT en formato 12345678-9" 
-                    name = "formSocio_rut" 
-                    value = <?=$this->session->userdata("rut")?>>
+                    name = "formSocio_rut" >
     
             <div class="invalid-feedback"></div><!--mensaje de error LLENAR CAMPO-->
 
@@ -505,9 +504,9 @@
                     class="form-control" 
                     id="formSocio_razonParaElegirLaCarreraActualMotivo"
                     name = "formSocio_razonParaElegirLaCarreraActualIngresarMotivo"
-                    placeholder="Ingresar el/los motivo(s) de su elección"
-                    >
-</textarea >
+                    placeholder="Ingresar el/los motivo(s) de su elección">
+                </textarea >
+                
                 <div id="razonParaElegirLaCarreraActualOtroMotivo" class="invalid-feedback"></div>
             
             </div>

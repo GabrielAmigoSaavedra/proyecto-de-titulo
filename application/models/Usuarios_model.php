@@ -19,7 +19,9 @@ class Usuarios_model extends CI_Model {
 	}
     public function getTodosLosUsuarios()
     {
-        $consulta = $this->db->query("SELECT * FROM usuarios;");
+        $consulta = $this->db->query("  SELECT * 
+                                        FROM usuarios
+                                        WHERE rol = 2;");
     
         return $consulta;
     
